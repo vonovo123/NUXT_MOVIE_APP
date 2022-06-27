@@ -1,34 +1,30 @@
 <template>
   <footer>
     <Logo />
-    <a
-      href="https://github.com/ParkYoungWoong"
-      target="_blank">
-      (c){{ new Date().getFullYear() }} {{ name }}
-    </a>
+    (c){{ new Date().getFullYear() }} {{ name }}
   </footer>
 </template>
 
 <script>
-import Logo from '~/components/Logo'
+import Logo from "~/components/Logo";
 
 export default {
   components: {
-    Logo
+    Logo,
   },
   computed: {
     name() {
-      return this.$store.state.about.name
-    }
-  }
-}
+      return this.$store.state.about.name;
+    },
+  },
+};
 </script>
 
 <style lang="scss" scoped>
 footer {
   padding: 70px 0;
   text-align: center;
-  opacity: .3;
+  opacity: 0.3;
   .logo {
     display: block;
     margin-bottom: 4px;

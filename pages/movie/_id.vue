@@ -84,7 +84,7 @@ export default {
     Loader
   },
   async asyncData({store, params}){
-    await store.dispatch('movie/searchMovieWithId', {
+    await store.dispatch('movie/', {
       id: params.id
     })
     return {

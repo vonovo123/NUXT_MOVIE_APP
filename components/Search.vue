@@ -1,5 +1,6 @@
 <template>
   <div class="container">
+    <span class="badge bg-secondary">누구랑</span>
     <input
       v-model="title"
       class="form-control"

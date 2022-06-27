@@ -2,73 +2,60 @@
   <header>
     <Logo />
     <div class="nav nav-pills">
-      <div
-        v-for="nav in navigations"
-        :key="nav.name"
-        class="nav-item">
+      <div v-for="nav in navigations" :key="nav.name" class="nav-item">
         <NuxtLink
           :to="nav.href"
-          active-class="active"
-          :class="{ active: isMatch(nav.path) }"
+          active-class="{ active: isMatch(nav.path) }"
           class="nav-link"
-          exact>
+          exact
+        >
           {{ nav.name }}
         </NuxtLink>
       </div>
-    </div>
-    <div
-      class="user"
-      @click="toAbout">
-      <img
-        :src="image"
-        :alt="name" />
     </div>
   </header>
 </template>
 
 <script>
-import { mapState } from 'vuex'
-import Logo from '~/components/Logo'
+import { mapState } from "vuex";
+import Logo from "~/components/Logo";
 
 export default {
   components: {
-    Logo
+    Logo,
   },
   data() {
     return {
       navigations: [
         {
-          name: 'Search',
-          href: '/'
+          name: "Search",
+          href: "/",
         },
         {
-          name: 'Movie',
-          href: '/movie/tt4520988',
-          path: /^\/movie/
+          name: "Movie",
+          href: "/movie/tt4520988",
+          path: /^\/movie/,
         },
         {
-          name: 'About',
-          href: '/about'
-        }
-      ]
-    }
+          name: "About",
+          href: "/about",
+        },
+      ],
+    };
   },
   computed: {
-    ...mapState('about', [
-      'image',
-      'name'
-    ])
+    ...mapState("about", ["image", "name"]),
   },
   methods: {
     isMatch(path) {
-      if (!path) return false
-      return path.test(this.$route.fullPath)
+      if (!path) return false;
+      return path.test(this.$route.fullPath);
     },
     toAbout() {
-      this.$router.push('/about')
-    }
-  }
-}
+      this.$router.push("/about");
+    },
+  },
+};
 </script>
 
 <style lang="scss" scoped>
@@ -94,7 +81,7 @@ header {
     bottom: 0;
     right: 40px;
     margin: auto;
-    transition: .4s;
+    transition: 0.4s;
     &:hover {
       background-color: darken($gray-200, 10%);
     }

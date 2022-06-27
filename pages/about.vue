@@ -1,12 +1,7 @@
 <template>
   <div class="about">
     <div class="photo">
-      <Loader
-        v-if="imageLoading"
-        absolute />
-      <img
-        :src="image"
-        :alt="name" />
+      <Loader v-if="imageLoading" absolute />
     </div>
     <div class="name">
       {{ name }}
@@ -18,49 +13,55 @@
 </template>
 
 <script>
-import { mapState } from 'vuex'
-import Loader from '~/components/Loader'
+import { mapState } from "vuex";
+import Loader from "~/components/Loader";
 
 export default {
   components: {
-    Loader
+    Loader,
   },
   data() {
     return {
-      imageLoading: true
-    }
+      imageLoading: true,
+    };
   },
   computed: {
-    ...mapState('about', [
-      'name',
-      'email',
-      'blog',
-      'phone',
-      'image'
-    ])
+    ...mapState("about", ["name", "email", "blog", "phone", "image"]),
   },
   mounted() {
-    this.init()
+    this.init();
   },
   methods: {
     async init() {
-      await this.$loadImage(this.image)
-      this.imageLoading = false
-    }
+      await this.$loadImage(this.image);
+      this.imageLoading = false;
+    },
   },
-    head(){
+  head() {
     return {
       meta: [
-        { hid : 'og:type', property: 'og:site_name', content : 'website'},
-        { hid : 'og:site_name', property: 'og:site_name', content : 'Nuxt Movie App'},
-        { hid : 'og:title', property: 'og:title', content : this.name},
-        { hid : 'og:description', property: 'og:description', content : this.email},
-        { hid : 'og:image', property: 'og:image', content : this.image},
-        { hid : 'og:url', property: 'og:url', content : `${process.env.CLIENT_URL}${this.$route.fullPath}`},
-      ]
-    }
-  }
-}
+        { hid: "og:type", property: "og:site_name", content: "website" },
+        {
+          hid: "og:site_name",
+          property: "og:site_name",
+          content: "Nuxt Movie App",
+        },
+        { hid: "og:title", property: "og:title", content: this.name },
+        {
+          hid: "og:description",
+          property: "og:description",
+          content: this.email,
+        },
+        { hid: "og:image", property: "og:image", content: this.image },
+        {
+          hid: "og:url",
+          property: "og:url",
+          content: `${process.env.CLIENT_URL}${this.$route.fullPath}`,
+        },
+      ],
+    };
+  },
+};
 </script>
 
 <style lang="scss" scoped>
